@@ -7,13 +7,15 @@ const log = new Logger({
   'ca': [fs.readFileSync(process.env.CA_ROOT)]
 });
 
-log.send('this is a message', 'info', 'my.app.test')
-.then(() => log.log('notice: %d', Date.now()))
-.then(() => log.info('info'))
-.then(() => log.warn('warn'))
-.then(() => log.error('error'))
-.then(() => log.dir({ a: 1 }))
-.then(() => log.time('time'))
-.then(() => log.timeEnd('time'))
-// .then( () => process.exit(0))
-;
+Promise.all([
+  log.send('this is a message', Logger.Severity.alert, 'my.app.test'),
+  log.log('notice: %d', Date.now()),
+  log.info('info'),
+  log.warn('warn'),
+  log.error('error'),
+  log.dir({ a: 1 }),
+  log.time('time'),
+  log.timeEnd('time'),
+])
+  .then(() => process.exit(0))
+  .catch(() => process.exit(1));
