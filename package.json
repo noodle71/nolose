@@ -3,6 +3,7 @@
   "description": "NOde LOgtrust SEnder",
   "version": "0.0.1",
   "scripts": {
-    "start": "PRIVATE_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.key PUBLIC_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.crt CA_ROOT=$HOME/utils/ltCertificates/afernandez/chain.crt TAG=my.app.test1 node demo/sender.js"
+    "start": "PRIVATE_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.key PUBLIC_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.crt CA_ROOT=$HOME/utils/ltCertificates/afernandez/chain.crt TAG=my.app.test node demo/sender.js",
+    "area": "PRIVATE_KEY=$HOME/utils/ltCertificates/self/self.key PUBLIC_KEY=$HOME/utils/ltCertificates/self/self.crt CA_ROOT=$HOME/utils/ltCertificates/self/chain.crt TAG=my.app.areaMap node demo/area.js"
   }
 }

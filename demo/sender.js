@@ -1,3 +1,6 @@
+/*
+  Test all options to send logs to Devo
+*/
 const fs = require('fs');
 const Logger = require('../lib/SyslogSSL.js');
 const log = new Logger({
