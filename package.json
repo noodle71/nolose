@@ -5,6 +5,7 @@
   "scripts": {
     "sender": "PRIVATE_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.key PUBLIC_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.crt CA_ROOT=$HOME/utils/ltCertificates/afernandez/chain.crt TAG=my.app.test node demo/sender.js",
     "xss": "PRIVATE_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.key PUBLIC_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.crt CA_ROOT=$HOME/utils/ltCertificates/afernandez/chain.crt TAG=my.app.xssTest node demo/xss.js",
-    "area": "PRIVATE_KEY=$HOME/utils/ltCertificates/self/self.key PUBLIC_KEY=$HOME/utils/ltCertificates/self/self.crt CA_ROOT=$HOME/utils/ltCertificates/self/chain.crt TAG=my.app.areaMap node demo/area.js"
+    "area": "PRIVATE_KEY=$HOME/utils/ltCertificates/self/self.key PUBLIC_KEY=$HOME/utils/ltCertificates/self/self.crt CA_ROOT=$HOME/utils/ltCertificates/self/chain.crt TAG=my.app.areaMap node demo/area.js",
+    "pew": "PRIVATE_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.key PUBLIC_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.crt CA_ROOT=$HOME/utils/ltCertificates/afernandez/chain.crt TAG=my.app.pew node demo/pewpew.js"
   }
 }
