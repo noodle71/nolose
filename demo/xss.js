@@ -1,13 +1,9 @@
 /*
   Test XSS logs for frontend
 */
-const fs = require('fs');
-const Logger = require('../lib/SyslogSSL.js');
-const log = new Logger({
-  'tag': process.env.TAG,
-  'key': fs.readFileSync(process.env.PRIVATE_KEY),
-  'cert': fs.readFileSync(process.env.PUBLIC_KEY),
-  'ca': [fs.readFileSync(process.env.CA_ROOT)]
+const loggerFactory = require('./common/loggerFactory.js');
+const log = loggerFactory({
+  'tag': process.env.TAG
 });
 
 Promise.all([
@@ -45,4 +41,7 @@ Promise.all([
   log.info(encodeURI('40.412881|-3.695501|</body><script>alert(1)</script></p>')),
 ])
   .then(() => process.exit(0))
-  .catch(() => process.exit(1));
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });

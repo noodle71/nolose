@@ -2,10 +2,17 @@
   "name": "nolose",
   "description": "NOde LOgtrust SEnder",
   "version": "0.0.1",
+  "vars":{
+    "syslogHost": "eu.elb.relay.logtrust.net",
+    "port": 443,
+    "key": "$CERTS/domain.key",
+    "cert": "$CERTS/domain.crt",
+    "ca": "$CERTS/chain.crt"
+  },
   "scripts": {
-    "sender": "PRIVATE_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.key PUBLIC_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.crt CA_ROOT=$HOME/utils/ltCertificates/afernandez/chain.crt TAG=my.app.test node demo/sender.js",
-    "xss": "PRIVATE_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.key PUBLIC_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.crt CA_ROOT=$HOME/utils/ltCertificates/afernandez/chain.crt TAG=my.app.xssTest node demo/xss.js",
-    "area": "PRIVATE_KEY=$HOME/utils/ltCertificates/self/self.key PUBLIC_KEY=$HOME/utils/ltCertificates/self/self.crt CA_ROOT=$HOME/utils/ltCertificates/self/chain.crt TAG=my.app.areaMap node demo/area.js",
-    "pew": "PRIVATE_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.key PUBLIC_KEY=$HOME/utils/ltCertificates/afernandez/afernandez.crt CA_ROOT=$HOME/utils/ltCertificates/afernandez/chain.crt TAG=my.app.pew node demo/pewpew.js"
+    "sender": "TAG=my.app.sender node demo/sender.js",
+    "xss": "TAG=my.app.xss node demo/xss.js",
+    "area": "TAG=my.app.area node demo/area.js",
+    "pew": "TAG=my.app.pew node demo/pewpew.js"
   }
 }

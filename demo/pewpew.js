@@ -1,15 +1,10 @@
-
 /*
   Testing to send geolocation logs usefull for pew pew maps
 */
 const cities = require('./data/cities.js');
-const fs = require('fs');
-const Logger = require('../lib/SyslogSSL.js');
-const log = new Logger({
-  'tag': process.env.TAG,
-  'key': fs.readFileSync(process.env.PRIVATE_KEY),
-  'cert': fs.readFileSync(process.env.PUBLIC_KEY),
-  'ca': [fs.readFileSync(process.env.CA_ROOT)]
+const loggerFactory = require('./common/loggerFactory.js');
+const logger = loggerFactory({
+  'tag': process.env.TAG
 });
 
 const length = 100000;
@@ -34,17 +29,16 @@ function buildData() {
   });
 }
 
-function getRandomLoc(){
+function getRandomLoc() {
   const i = Math.floor(getRandomInt(0, len));
-  const coord = [parseFloat(cities[i].lng),parseFloat(cities[i].lat), cities[i].name];
+  const coord = [parseFloat(cities[i].lng), parseFloat(cities[i].lat), cities[i].name];
   return coord;
 }
 
-function randomFrom(){
-}
-
 function randomList(cb) {
-  return Array.from({ length }, cb);
+  return Array.from({
+    length
+  }, cb);
 }
 
 function getRandomInt(min, max) {
@@ -54,9 +48,12 @@ function getRandomInt(min, max) {
 const randomGeoData = buildData();
 
 Promise.all(randomGeoData.map(d => {
-  const l = JSON.stringify(d);
-  console.log(l);
-  return log.log(l);
-}))
-  .then(() => process.exit(0))
-  .catch(() => process.exit(1));
+    const l = JSON.stringify(d);
+    console.log(l);
+    return logger.log(l);
+  }))
+  .then((d) => process.exit(0))
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
